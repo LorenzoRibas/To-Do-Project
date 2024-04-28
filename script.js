@@ -1,16 +1,21 @@
 document.addEventListener("DOMContentLoaded", function() {
+
     let btn = document.querySelector("#add");
     let input = document.querySelector(".newtask input");
     let tasksContainer = document.querySelector(".tasks");
     let emptyMessage = document.querySelector('.empty-message');
 
     btn.addEventListener("click", function() {
+
         if(input.value.trim().length === 0) {
             alert("Please enter a task before adding.");
-        } else {
+        } 
+        
+        else {
             let newTaskElement = document.createElement('div');
             newTaskElement.classList.add('task');
             newTaskElement.innerHTML = `
+
                 <span class="taskname">
                     ${input.value}
                 </span>
@@ -27,22 +32,51 @@ document.addEventListener("DOMContentLoaded", function() {
             tasksContainer.appendChild(newTaskElement);
             input.value = "";
             updateEmptyMessage();
-            addDeleteEventListener(newTaskElement.querySelector('.delete'));
+            addTaskEventListeners(newTaskElement);
         }
     });
 
     function updateEmptyMessage() {
+
         let tasksCount = tasksContainer.querySelectorAll('.task').length;
+
         if (tasksCount > 0) {
             emptyMessage.style.display = 'none';
-        } else {
+        }
+        
+        else {
             emptyMessage.style.display = 'block';
         }
     }
 
-    function addDeleteEventListener(deleteButton) {
+    function addTaskEventListeners(taskElement) {
+        let editButton = taskElement.querySelector('.edit');
+        let taskName = taskElement.querySelector('.taskname');
+
+        editButton.addEventListener('click', function() {
+            let currentText = taskName.textContent.trim();
+            let newText = prompt("Edit task:", currentText);
+
+            if (newText !== null) {
+                newText = newText.trim();
+
+                if (newText.length > 0 && newText.length < 50) {
+                    taskName.textContent = newText;
+                }
+
+                else if (newText.length > 50){
+                    alert("Task length limit is 50");
+                }
+                
+                else {
+                    alert("Invalid task name. Please enter a valid task.");
+                }
+            }
+        });
+
+        let deleteButton = taskElement.querySelector('.delete');
         deleteButton.addEventListener('click', function() {
-            this.parentNode.parentNode.remove();
+            taskElement.remove();
             updateEmptyMessage();
         });
     }
