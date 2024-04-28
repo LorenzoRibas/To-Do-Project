@@ -1,0 +1,118 @@
+:root {
+  --bg-color1: #5585b5;
+  --bg-color2: #53a8b6;
+  --container-bg: #5585b5;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-style: normal;
+  background: linear-gradient(320deg, #5585b5, #bbe4e9);
+}
+
+.container {
+  width: 40%;
+  min-width: 450px;
+  background-color: var(--container-bg);
+  border-radius: 12px;
+  padding: 30px; 
+  box-sizing: border-box; 
+}
+
+.newtask {
+  display: flex;
+  align-items: center;
+  padding: 10px; 
+}
+
+.newtask input {
+  flex: 1;
+  height: 45px;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  border: 1px solid white;
+  outline-color: white;
+}
+
+.add-btn {
+  background: var(--bg-color2);
+  color: white;
+  margin-left: 10px;
+  font-weight: 500;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  height: 72px;
+  padding: 12px 20px; 
+  transition: transform 0.07s ease;
+}
+
+.add-btn:active {
+  transform: scale(1.1);
+}
+
+.empty-message {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.tasks {
+  border-radius: 10px;
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+  margin-left: 8px;
+  margin-right: 10px;
+  max-height: 300px;
+  overflow-y: auto; 
+}
+
+.task {
+  border-radius: 10px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  height: 50px;
+  margin-bottom: 10px;
+  padding: 10px; 
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.task .taskname {
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: black;
+}
+
+.btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.task button {
+  background: var(--bg-color2);
+  color: white;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  height: 30px;
+  width: 30px;
+  border-radius: 5px;
+}
+
+.task button i {
+  font-size: 16px;
+}
